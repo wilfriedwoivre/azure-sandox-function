@@ -4,12 +4,11 @@
 
 - [ ] Create infrastructure as code
 
-  - [ ] Azure Storage
-  - [ ] App Service Plan
-  - [ ] Azure Function
-  - [ ] Azure Managed Identity
+  - [X] Azure Storage
+  - [X] App Service Plan
+  - [X] Azure Function
+  - [X] Azure Managed Identity
   - [ ] Role Assignement
-  - [ ] Optional Application Insight
 
 - [X] Github Actions
   
