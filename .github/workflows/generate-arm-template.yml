@@ -52,6 +52,7 @@ jobs:
         templatePath: 'iac/azuredeploy.json'
         markdownPath: 'Readme.md'
         branchName: 'v3'
+        targetAzureUrl: 'https://portal.azure.com/#create/Microsoft.Template/uri/'
       
 
     - name: debug
