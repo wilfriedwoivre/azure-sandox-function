@@ -1,6 +1,7 @@
 # Azure Sandbox function
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fwilfriedwoivre%2Fazure-sandbox-function%2Fmaster%2Fiac%2Fazuredeploy.json)
+
+
 ## Todo
 
 - [ ] Create infrastructure as code

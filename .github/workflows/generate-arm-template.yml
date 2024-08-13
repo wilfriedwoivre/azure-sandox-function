@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Bicep Build
-        uses: Azure/bicep-build-action@v1.0.0
+        uses: Azure/bicep-build-action@v1.0.1
         with:
           bicepFilePath: 'iac/azuredeploy.bicep'
           outputFilePath: 'iac/azuredeploy.json'
@@ -47,7 +47,7 @@ jobs:
 
     - name: generate-deploy-button
       id: generate-deploy-button
-      uses: wilfriedwoivre/action-deploy-azure-button@v1.1
+      uses: wilfriedwoivre/action-deploy-azure-button@v2.0
       env:
         templatePath: 'iac/azuredeploy.json'
         markdownPath: 'Readme.md'
