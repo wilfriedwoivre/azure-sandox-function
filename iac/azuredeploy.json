@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.29.47.4906",
-      "templateHash": "10621338239698099796"
+      "templateHash": "17358836715489119900"
     }
   },
   "parameters": {
@@ -5395,6 +5395,11 @@
             "value": {
               "alwaysOn": false,
               "netFrameworkVersion": "v8"
+            }
+          },
+          "managedIdentities": {
+            "value": {
+              "systemAssigned": true
             }
           }
         },
