@@ -61,6 +61,9 @@ module functionApp 'br/public:avm/res/web/site:0.4.0' = {
       alwaysOn: false
       netFrameworkVersion: 'v8'
     }
+    managedIdentities: {
+      systemAssigned: true
+    }
   }
 }
 
