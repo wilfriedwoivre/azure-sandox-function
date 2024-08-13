@@ -1,0 +1,33 @@
+name: Generate ARM template
+
+on:
+  workflow_dispatch:
+  push: 
+    branches:
+      - v2
+    paths:
+      - iac/**
+
+
+jobs:
+  generate-arm-template:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Bicep Build
+        uses: Azure/bicep-build-action@v1.0.0
+        with:
+          bicepFilePath: 'iac/azuredeploy.bicep'
+          outputFilePath: 'iac/azuredeploy.json'
+
+      - name: push-update
+        run: |
+          ls -R
+          git config --global user.name 'Gitub Action Bot'
+          git config --global user.email 'wilfried.woivre@users.noreply.github.com'
+          git add .
+          git diff --quiet && git diff --staged --quiet || git commit -am "Add Azure ARM template"
+          git pull --rebase
+          git push
+
