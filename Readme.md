@@ -1,5 +1,6 @@
 # Azure Sandbox function
 
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](Nonehttps%3A%2F%2Fraw.githubusercontent.com%2Fwilfriedwoivre%2Fazure-sandbox-function%2Fv3%2Fiac%2Fazuredeploy.json)
 
 
 ## Todo
