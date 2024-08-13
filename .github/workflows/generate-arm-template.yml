@@ -51,7 +51,7 @@ jobs:
       env:
         templatePath: 'iac/azuredeploy.json'
         markdownPath: 'Readme.md'
-        branch: 'v3'
+        branchName: 'v3'
       
 
     - name: debug
