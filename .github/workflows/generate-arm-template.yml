@@ -1,4 +1,4 @@
-name: Generate ARM template
+name: Generate ARM template & Add button
 
 on:
   workflow_dispatch:
@@ -30,4 +30,39 @@ jobs:
           git diff --quiet && git diff --staged --quiet || git commit -am "Add Azure ARM template"
           git pull --rebase
           git push
+
+  add-azure-deploy-button:
+    needs:
+      - generate-arm-template
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: rebase-before-run
+      run: |
+        git config --global user.name 'Gitub Action Bot'
+        git config --global user.email 'wilfried.woivre@users.noreply.github.com'
+        git pull --rebase
+
+    - name: generate-deploy-button
+      id: generate-deploy-button
+      uses: wilfriedwoivre/action-deploy-azure-button@v1.1
+      env:
+        templatePath: 'iac/azuredeploy.json'
+        markdownPath: 'Readme.md'
+      
+
+    - name: debug
+      run: echo ${{ steps.generate-deploy-button.outputs.fileUpdated }}
+
+    - name: push-update
+      if: steps.generate-deploy-button.outputs.fileUpdated == 'True'
+      run: |
+        git config --global user.name 'Gitub Action Bot'
+        git config --global user.email 'wilfried.woivre@users.noreply.github.com'
+        git add .
+        git diff --quiet && git diff --staged --quiet || git commit -am "Add Azure deploy button"
+        git pull --rebase
+        git push
 

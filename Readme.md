@@ -11,10 +11,10 @@
   - [ ] Role Assignement
   - [ ] Optional Application Insight
 
-- [ ] Github Actions
+- [X] Github Actions
   
-  - [ ] Build ARM Template
-  - [ ] Add deploy button
+  - [X] Build ARM Template
+  - [X] Add deploy button
 
 - [ ] Functions
 
