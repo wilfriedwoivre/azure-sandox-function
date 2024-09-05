@@ -32,6 +32,18 @@ module stg 'br/public:avm/res/storage/storage-account:0.11.1' = {
   }
 }
 
+module appInsight 'br/public:avm/res/insights/component:0.4.0' = {
+  scope: resourceGroup
+  name: 'sandbox-insight'
+  params: {
+    name: 'insight${uniqueString(resourceGroup.id)}'
+    applicationType: 'web'
+    kind: 'web'
+    location: resourceGroup.location
+    workspaceResourceId: '/subscriptions/${subscription().subscriptionId}/resourceGroups/common-rg/providers/Microsoft.OperationalInsights/workspaces/${subscription().subscriptionId}-law'
+  }
+}
+
 module hostingPlan 'br/public:avm/res/web/serverfarm:0.2.2' = {
   scope: resourceGroup
   name: 'serverfarm'
@@ -39,6 +51,7 @@ module hostingPlan 'br/public:avm/res/web/serverfarm:0.2.2' = {
     name: 'plan${uniqueString(resourceGroup.id)}'
     skuCapacity: 1
     skuName: 'Y1'
+    kind: 'Linux'
   }
 }
 
@@ -47,7 +60,7 @@ module functionApp 'br/public:avm/res/web/site:0.4.0' = {
   name: 'functionapp'
   params: {
     name: 'sandbox${uniqueString(resourceGroup.id)}'
-    kind: 'functionapp'
+    kind: 'functionapp,linux'
     serverFarmResourceId: hostingPlan.outputs.resourceId
     storageAccountResourceId: stg.outputs.resourceId
     appSettingsKeyValuePairs: {
@@ -55,11 +68,13 @@ module functionApp 'br/public:avm/res/web/site:0.4.0' = {
       'FUNCTIONS_WORKER_RUNTIME': 'dotnet-isolated'
       'WEBSITE_USE_PLACEHOLDER_DOTNETISOLATED': '1'
     }
-    storageAccountUseIdentityAuthentication: true
+    storageAccountUseIdentityAuthentication: false
+    appInsightResourceId: appInsight.outputs.resourceId
+    enableTelemetry: true
     httpsOnly: true
     siteConfig: {
       alwaysOn: false
-      netFrameworkVersion: 'v8'
+      linuxFxVersion: 'DOTNET-ISOLATED|8.0'
     }
     managedIdentities: {
       systemAssigned: true

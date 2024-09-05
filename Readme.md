@@ -5,7 +5,7 @@
 
 ## Todo
 
-- [ ] Create infrastructure as code
+- [X] Create infrastructure as code
 
   - [X] Azure Storage
   - [X] App Service Plan
@@ -18,7 +18,7 @@
   - [X] Build ARM Template
   - [X] Add deploy button
 
-- [ ] Functions
+- [X] Functions
 
-  - [ ] Create Resource Group
-  - [ ] Cleanup expired resource group
+  - [X] Create Resource Group
+  - [X] Cleanup expired resource group
