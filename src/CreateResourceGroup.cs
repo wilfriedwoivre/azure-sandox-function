@@ -37,7 +37,7 @@ namespace wwoivre.azure.sandbox.tooling
                 SubscriptionResource subscription = await client.GetDefaultSubscriptionAsync();
                 ResourceGroupCollection resourceGroups = subscription.GetResourceGroups();
 
-                AzureLocation location = AzureLocation.WestEurope;
+                AzureLocation location = AzureLocation.NorthEurope;
                 string resourceGroupName = data.Name;
 
                 ResourceGroupData resourceGroupData = new ResourceGroupData(location);
